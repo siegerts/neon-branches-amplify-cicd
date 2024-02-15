@@ -1,0 +1,46 @@
+version: 1
+backend:
+  phases:
+    preBuild:
+      commands:
+        - sudo yum -y install jq
+        - jq --version
+        - npm i -g neonctl@v1
+    build:
+      commands:
+        - nvm use 18
+        - corepack enable
+        - pnpm install
+        # - npx amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+        - |
+          if [ "${AWS_BRANCH}" = "main" ] || [ "${AWS_BRANCH}" = "dev" ]; then 
+            pnpm amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+          else
+            pnpm amplify generate config --branch main --app-id $AWS_APP_ID 
+            bash neon-ci.sh create-branch --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --branch-name $AWS_BRANCH --parent-branch main --api-key-param "<ssm-param>" --role-name <neon-role> --database-name <neon-db-name> --suspend-timeout 0
+          fi
+
+    postBuild:
+        commands:
+          - |
+            if ! [ "${AWS_BRANCH}" = "main" ] && ! [ "${AWS_BRANCH}" = "dev" ]; then
+              bash neon-ci.sh cleanup-branches --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --api-key-param "<ssm-param>"
+            fi
+  cache:
+    paths:
+      - $(pnpm store path)
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm use 18
+        - corepack enable
+        - npx --yes nypm i
+    build:
+      commands:
+        - npm run build
+     
+  artifacts:
+    baseDirectory: .amplify-hosting
+    files:
+      - "**/*"
