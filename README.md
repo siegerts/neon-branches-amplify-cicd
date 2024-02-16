@@ -44,23 +44,27 @@ The `neon-ci.sh` script facilitates the creation and cleanup of Neon database br
 ./neon-ci.sh <command> [options]
 
 Commands
-create-branch: Creates a new Neon database branch.
+create-branch:
+    Creates a new Neon database branch.
 
 options:
-        --app-id <app-id>
-        --neon-project-id <project-id>
-        --parent-branch-id <parent-branch-id>
-        --api-key-param <api-key-param>
-        --role-name <role-name>
-        --database-name <database-name>
-        --suspend-timeout <suspend-timeout>
+    --app-id <app-id>
+    --neon-project-id <project-id>
+    --parent-branch-id <parent-branch-id>
+    --api-key-param <api-key-param>
+    --role-name <role-name>
+    --database-name <database-name>
+    --suspend-timeout <suspend-timeout>
 
-cleanup-branches: Cleans up Neon database branches that no longer have corresponding Amplify app branches.
+
+cleanup-branches:
+    Cleans up Neon database branches that no longer
+    have corresponding Amplify app branches.
 
 options:
-        --app-id <app-id>
-        --neon-project-id <project-id>
-        --api-key-param <api-key-param>
+    --app-id <app-id>
+    --neon-project-id <project-id>
+    --api-key-param <api-key-param>
 ```
 
 ### Features
