@@ -120,9 +120,9 @@ options:
 
 ### Integration Steps
 
-1. Configure AWS Amplify: Set up your Amplify app and CI/CD pipeline as per your project requirements.
-2. Set Up Neon: Ensure your Neon project is configured and obtain your project ID and API key.
-3. Customize the Script: Modify neon-ci.sh with your specific Neon project ID, database name, and other parameters as needed.
+1. Set up your Amplify app and CI/CD pipeline as per your project requirements. Enable branch auto-detection for the app to create a new Amplify app branch for each new git branch matching the configured pattern.
+2. Set Up your Neon project and create your an API key.
+3. Modify neon-ci.sh with your specific Neon project ID, database name, and other parameters as needed.
 
 ```bash
 bash neon-ci.sh create-branch --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --branch-name $AWS_BRANCH --parent-branch main --api-key-param "<ssm-param>" --role-name <neon-role> --database-name <neon-db-name> --suspend-timeout 0
@@ -130,4 +130,4 @@ bash neon-ci.sh create-branch --app-id $AWS_APP_ID --neon-project-id <neon-proje
 
 4. Create a AWS Systems Manager (SSM) Parameter Store parameter for the Neon API key
 5. Add the correct policy permissions to the Amplify app Service role for SSM and Amplify (`listBranches`)
-6. Deploy: Push your changes and monitor the Amplify and Neon consoles for the deployment status.
+6. Deploy: Push your changes and monitor the Amplify consoles for the deployment status. The Neon console will show the created branch(es).
