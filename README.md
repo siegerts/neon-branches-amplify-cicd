@@ -2,7 +2,7 @@
 
 **Neon Postgres Branch for each Amplify Hosting app branch.**
 
-This example outlines how to integrate AWS Amplify Hosting with Neon for database management through CI/CD pipelines. The setup includes a custom Bash script (`neon-ci.sh`) for creating and cleaning up Neon database branches in correlation with the Amplify app branches.
+This example outlines how to integrate AWS Amplify Hosting with Neon for database management through CI/CD pipelines. The setup includes a custom Bash script (`neon-ci.sh`) for creating and cleaning up Neon database branches in correlation with the Amplify app branches. The database connection string for the branch is written into the `.env` file as an environment variable as `DATABASE_URL`.
 
 This example is an `amplify.yml` buildspec for an [Amplify Gen 2 Backend](https://docs.amplify.aws/gen2/build-a-backend/auth/set-up-auth/). Specifically, this Nuxt SSR app is deployed using Amplify Hosting's `WEB COMPUTE` platform.
 
@@ -69,9 +69,9 @@ options:
 
 ### Features
 
-- Branch Management: Automatically creates and deletes Neon database branches to match the lifecycle of the Amplify app branches.
-- Security: Utilizes AWS SSM Parameter Store for securely managing the Neon API key.
-- Flexibility: Supports custom database names, roles, and suspend timeouts.
+- Automatically creates and deletes Neon database branches to match the lifecycle of the Amplify app branches.
+- Utilizes AWS SSM Parameter Store for securely managing the Neon API key.
+- Supports custom database names, roles, and suspend timeouts.
 
 ### Requirements
 
@@ -129,5 +129,5 @@ bash neon-ci.sh create-branch --app-id $AWS_APP_ID --neon-project-id <neon-proje
 ```
 
 4. Create a AWS Systems Manager (SSM) Parameter Store parameter for the Neon API key
-5. Add the correct policy permissions to the Amplify app Service role for SSM and Amplify (`listBranches`)
+5. Add the correct policy permissions to the Amplify app Service role for SSM and Amplify (`amplify:ListBranches`)
 6. Deploy: Push your changes and monitor the Amplify consoles for the deployment status. The Neon console will show the created branch(es).
