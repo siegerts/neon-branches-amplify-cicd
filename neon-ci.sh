@@ -224,19 +224,21 @@ function cleanup_branches {
         return
     fi
 
+    echo "App branches (prefixed with app-id): $prefixed_app_branches"
+
     for branch in $neon_branches; do
         # skip if main or dev app branch
         # we don't want to delete the main and dev branches
-        if [[ $branch == "${AMPLIFY_APP_ID}-main" || $branch == "${AMPLIFY_APP_ID}-dev" || $branch == "main" || $branch == "dev" ]]; then
-            echo "skipping branch: $branch"
+        if [[ "$branch" == "${AMPLIFY_APP_ID}-main" || "$branch" == "${AMPLIFY_APP_ID}-dev" || "$branch" == "main" || "$branch" == "dev" ]]; then
+            echo "Skipping branch: $branch"
             continue
         fi
 
-        echo "App branches (prefixed with app-id): $prefixed_app_branches"
-
-        if [[ ! "$prefixed_app_branches" =~ "$branch" ]] && [[ -n "$branch" ]]; then
+        if [[ ! "$prefixed_app_branches" =~ "$branch" ]]; then
             echo "Deleting Neon branch: $branch"
             neonctl branches delete --project-id $NEON_PROJECT_ID $branch
+        else
+            echo "Skipping Neon branch: $branch"
         fi
     done
 }

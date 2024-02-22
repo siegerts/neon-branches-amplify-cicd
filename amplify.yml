@@ -22,9 +22,10 @@ backend:
 
     postBuild:
         commands:
+          - # EXAMPLE: only run the cleanup-branches command if you have tested 
           - |
             if ! [ "${AWS_BRANCH}" = "main" ] && ! [ "${AWS_BRANCH}" = "dev" ]; then
-              bash neon-ci.sh cleanup-branches --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --api-key-param "<ssm-param>"
+              # bash neon-ci.sh cleanup-branches --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --api-key-param "<ssm-param>"
             fi
   cache:
     paths:
