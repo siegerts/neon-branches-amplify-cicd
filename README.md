@@ -125,7 +125,7 @@ options:
 1. Set up your Amplify app and CI/CD pipeline as per your project requirements.
 2. Choose the Amazon Linux: 2023 build image
 3. Enable branch auto-detection for the app to create a new Amplify app branch for each new git branch matching the configured pattern.
-4. Set Up your Neon project and create your an API key.
+4. Set Up your [Neon project and create your an API key](https://neon.tech/github).
 5. Modify neon-ci.sh with your specific Neon project ID, database name, and other parameters as needed.
 
 ```bash
