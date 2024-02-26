@@ -2,7 +2,7 @@
 
 **Neon Postgres Branch for each Amplify Hosting app branch.**
 
-This example outlines how to integrate AWS Amplify Hosting with Neon for database management through CI/CD pipelines. The setup includes a custom Bash script (`neon-ci.sh`) for creating and cleaning up Neon database branches in correlation with the Amplify app branches. The database connection string for the branch is written into the `.env` file as an environment variable as `DATABASE_URL`.
+This example outlines how to integrate AWS Amplify Hosting with [Neon Postgres](https://neon.tech/github) for database management through CI/CD pipelines. The setup includes a custom Bash script (`neon-ci.sh`) for creating and cleaning up Neon database branches in correlation with the Amplify app branches. The database connection string for the branch is written into the `.env` file as an environment variable as `DATABASE_URL`.
 
 ![](cicd-diagram.png)
 
