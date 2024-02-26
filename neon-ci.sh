@@ -142,18 +142,6 @@ function set_neon_api_key {
     fi
 }
 
-# function install_neonctl {
-#     if ! command neonctl --v &> /dev/null; then
-#         if [ -f "yarn.lock" ]; then
-#             yarn global add neonctl@v1
-#         elif [ -f "pnpm-lock.yaml" ]; then
-#             pnpm setup
-#             pnpm install -g neonctl@v1
-#         else
-#             npm install -g neonctl@v1
-#         fi
-#     fi
-# }
 
 # create a new database branch
 # 0 means default = 5min
