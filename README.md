@@ -4,6 +4,8 @@
 
 This example outlines how to integrate AWS Amplify Hosting with Neon for database management through CI/CD pipelines. The setup includes a custom Bash script (`neon-ci.sh`) for creating and cleaning up Neon database branches in correlation with the Amplify app branches. The database connection string for the branch is written into the `.env` file as an environment variable as `DATABASE_URL`.
 
+![](cicd-diagram.png)
+
 This example is an `amplify.yml` buildspec for an [Amplify Gen 2 Backend](https://docs.amplify.aws/gen2/build-a-backend/auth/set-up-auth/). Specifically, this Nuxt SSR app is deployed using Amplify Hosting's `WEB COMPUTE` platform.
 
 ## Amplify Build Settings (`amplify.yml`)
