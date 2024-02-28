@@ -17,8 +17,9 @@ backend:
             pnpm amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
           else
             pnpm amplify generate config --branch main --app-id $AWS_APP_ID 
-            bash neon-ci.sh create-branch --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --branch-name $AWS_BRANCH --parent-branch main --api-key-param "<ssm-param>" --role-name <neon-role> --database-name <neon-db-name> --suspend-timeout 0
           fi
+
+          bash neon-ci.sh create-branch --app-id $AWS_APP_ID --neon-project-id <neon-project-id> --branch-name $AWS_BRANCH --parent-branch main --api-key-param "<ssm-param>" --role-name <neon-role> --database-name <neon-db-name> --suspend-timeout 0
 
     postBuild:
         commands:
