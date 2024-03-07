@@ -8,7 +8,7 @@ This example outlines how to integrate AWS Amplify Hosting with [Neon Postgres](
 
 This example is an `amplify.yml` buildspec for an [Amplify Gen 2 Backend](https://docs.amplify.aws/gen2/build-a-backend/auth/set-up-auth/). Specifically, this Nuxt SSR app is deployed using Amplify Hosting's `WEB COMPUTE` platform.
 
-_This repository is a companion to a [AWS Amplify Gen 2 Full stack CI/CD with Postgres (SSR, Web Compute, Auto-detection, SSM)](https://youtu.be/sBRI4QAZ-oo) YouTube video._
+_This repository is a companion to a [Fullstack Serverless CI/CD in AWS Amplify Hosting with Postgres Database Branching](https://neon.tech/blog/fullstack-serverless-ci-cd-in-aws-amplify-hosting-with-postgres-database-branching) blog post and [AWS Amplify Gen 2 Full stack CI/CD with Postgres (SSR, Web Compute, Auto-detection, SSM)](https://youtu.be/sBRI4QAZ-oo) YouTube video._
 
 ## Amplify Build Settings (`amplify.yml`)
 
